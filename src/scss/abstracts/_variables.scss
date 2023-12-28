@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('../../../node_modules/bootstrap/scss/functions.scss');
+@import url('../../../node_modules/bootstrap/scss/variables.scss');
+@import url('../../../node_modules/bootstrap/scss/mixins.scss');
+
+:root{
+    /*fonts*/
+    --foont-rubik :'Lobster', sans-serif;
+    /*colors*/
+}
+
+@import url('../../../node_modules/bootstrap/scss/bootstrap.scss');
