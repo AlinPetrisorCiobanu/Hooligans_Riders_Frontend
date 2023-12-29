@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('../../../node_modules/bootstrap/scss/functions.scss');
-@import url('../../../node_modules/bootstrap/scss/variables.scss');
-@import url('../../../node_modules/bootstrap/scss/mixins.scss');
 
 :root{
+    /*background*/
+    --background-color:rgb(60, 60, 62);
+    
     /*fonts*/
     --foont-rubik :'Lobster', sans-serif;
+
     /*colors*/
+    --foont-color:rgb(191, 224, 253);
+
 }
 
 @import url('../../../node_modules/bootstrap/scss/bootstrap.scss');

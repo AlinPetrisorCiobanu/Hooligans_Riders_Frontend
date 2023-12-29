@@ -1,15 +1,26 @@
+import React from "react";
 import { Body } from "./pages/Body/Body";
 import { Header } from "./common/Header/Header";
 import { Footer } from "./common/Footer/Footer";
-import './App.scss'
+import { useLocation } from "react-router-dom";
+import "./App.scss";
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
-      <Header />
-      <Body />
-      <Footer />
+      {location.pathname === "/" ? (
+        <Body />
+      ) : (
+        <>
+          <Header />
+          <Body />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
+
 export default App;
