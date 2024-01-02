@@ -5,6 +5,7 @@ import { Register } from "../Register/Register"
 import { Profile } from "../Profile/Profile"
 import { Events } from "../Events_Routes/Events_Routes"
 import { Creator_Events } from "../Events_Routes/Events_Routes_Options"
+import { Logout } from "../Login/Logout"
 
 export const Body = () =>{
     return(
@@ -16,6 +17,7 @@ export const Body = () =>{
         <Route path="/profile_user" element={<Profile/>}/>
         <Route path="/eventos_rutas" element={<Events/>}/>
         <Route path="/eventos_rutas_creator" element={<Creator_Events/>}/>
+        <Route path="/logout" element={<Logout/>}/>
     </Routes>
     )
 }

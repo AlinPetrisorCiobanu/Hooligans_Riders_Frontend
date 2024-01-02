@@ -2,11 +2,74 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useSelector } from "react-redux";
+import { userDate } from "../userSlice";
+
 import "./Home.scss";
 
 export const Home = () => {
+
+  const token = useSelector(userDate).credentials;
+
   return (
     <>
+    {token?(
+            <Container fluid className="container-background-home">
+            <Container fluid className="container-background-black"></Container>
+            <Container className="text-center container-home">
+              <Row className="mt-5">
+                <Col className="login_home">
+                  <h1>Hooligans~Riders</h1>
+                </Col>
+              </Row>
+              <Row className="mt-5">
+                <Col>
+                  <Row>
+                    <h1>Bienvenido</h1>
+                  </Row>
+                </Col>
+              </Row>
+              <Row className="mt-5">
+                <Col>
+                  <Row>
+                    <h1>Bienvenido</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                  </Row>
+                </Col>
+              </Row>
+            </Container>
+          </Container>
+    ):(
       <Container fluid className="container-background-home">
         <Container fluid className="container-background-black"></Container>
         <Container className="text-center container-home">
@@ -25,22 +88,43 @@ export const Home = () => {
             <Col>
               <Row>
                 <Col>
-                  <Button className="button_custom" href="https://www.facebook.com/groups/460968801996657" target="blank"><i class="fa-brands fa-facebook"></i></Button>
+                  <Button
+                    className="button_custom"
+                    href="https://www.facebook.com/groups/460968801996657"
+                    target="blank"
+                  >
+                    <i className="fa-brands fa-facebook"></i>
+                  </Button>
                 </Col>
                 <Col>
-                  <Button className="button_custom" href="https://www.instagram.com/hooligan.riders/" target="blank"><i class="fa-brands fa-instagram"></i></Button>
+                  <Button
+                    className="button_custom"
+                    href="https://www.instagram.com/hooligan.riders/"
+                    target="blank"
+                  >
+                    <i className="fa-brands fa-instagram"></i>
+                  </Button>
                 </Col>
                 <Col>
-                  <Button className="button_custom" href="https://www.tiktok.com/@hooligan.rider" target="blank"><i class="fa-brands fa-tiktok"></i></Button>
+                  <Button
+                    className="button_custom"
+                    href="https://www.tiktok.com/@hooligan.rider"
+                    target="blank"
+                  >
+                    <i className="fa-brands fa-tiktok"></i>
+                  </Button>
                 </Col>
                 <Col>
-                  <Button className="button_custom" href="#" target="blank"><i class="fa-brands fa-youtube"></i></Button>
+                  <Button className="button_custom" href="#" target="blank">
+                    <i className="fa-brands fa-youtube"></i>
+                  </Button>
                 </Col>
               </Row>
             </Col>
           </Row>
         </Container>
       </Container>
+    )}
     </>
   );
 };

@@ -8,6 +8,9 @@
     display: flex;
     justify-content: center;
     vertical-align: middle;
+    position: relative;
+    top: 0;
+    left: 0;
     
 
 
@@ -25,8 +28,10 @@
         flex-direction: column;
         justify-content: center;
         z-index: 1;
+        overflow: scroll;
+        height: 80vh;
         h1{
-            font-size: 10vw;
+            font-size: 7vw;
         }
         .button_custom{
             font-size:2.2vw;
