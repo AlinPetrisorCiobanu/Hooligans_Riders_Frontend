@@ -4,7 +4,7 @@ export const userSlice = createSlice({
     name: 'user',
     initialState: {
       credentials: {},
-      token:""
+      user:{},
     },
     reducers: {
       userLogin: (state, action) => {
