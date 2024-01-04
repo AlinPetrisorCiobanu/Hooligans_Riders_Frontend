@@ -13,7 +13,7 @@ export const Profiles = () => {
   const user = useSelector(userDate).user;
   const [users, setUsers] = useState([]);
   const [pages, setPages] = useState("");
-  const [curent_page, setCurent_Page] = useState(1)
+  const [curent_page, setCurent_Page] = useState(1);
 
   //si no tienes token te manda a la pagina de inicio
   const tokenExist = (tokenEx) => {
@@ -23,18 +23,35 @@ export const Profiles = () => {
   };
   useEffect(() => {
     tokenExist(token);
-    getDataUsers(token , curent_page)
-    .then((res) => {
+  }, [token]);
+
+  useEffect(() => {
+    getDataUsers(token, curent_page).then((res) => {
       setUsers(res.data.data);
       setPages(res.data.last_page);
     });
-  }, [token]);
+  }, [curent_page]);
 
   const modify = () => {
     console.log("modificar");
   };
   const deleteTo = () => {
     console.log("borrar");
+  };
+
+  const pagination = (data) => {
+    const cont = curent_page;
+    if (data === "first_page") {
+      setCurent_Page(1);
+    } else if (data === "prev") {
+      setCurent_Page(cont - 1);
+    } else if (data === "next") {
+      setCurent_Page(cont + 1);
+    } else if (data === "last_page") {
+      setCurent_Page(cont + 1);
+    } else {
+      setCurent_Page(data);
+    }
   };
 
   return (
@@ -46,7 +63,11 @@ export const Profiles = () => {
           </div>
         );
       })}
-      <Custom_Pagination />
+      <Custom_Pagination
+        pages={pages}
+        curent_page={curent_page}
+        handlerPages={pagination}
+      />
     </>
   );
 };

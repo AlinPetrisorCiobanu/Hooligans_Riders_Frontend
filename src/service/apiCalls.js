@@ -53,7 +53,6 @@ export const getDataUsers = (token , page) => {
     return axios
       .get(`${URL}users?page=${page}`, config)
       .then((res) => {
-        console.log(res)
         return res.data;
       })
       .catch((error) => {
