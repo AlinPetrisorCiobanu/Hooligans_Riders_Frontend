@@ -42,28 +42,45 @@ export const NavBar = () => {
               </Nav.Link>
               <NavDropdown
                 className="configTextNav"
-                title={role === "admin" || role === "super_admin" ? "admin" : name}
+                title={
+                  role === "admin" || role === "super_admin" ? "admin" : name
+                }
                 id="collapsible-nav-dropdown"
               >
+                <NavDropdown.Item
+                  className="configTextNav"
+                  href="/profile_user"
+                >
+                  Mi Perfil
+                </NavDropdown.Item>
                 {role === "admin" || role === "super_admin" ? (
                   <>
-                    <NavDropdown.Item className="configTextNav" href="/profile">
-                      Mi Perfil
-                    </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item className="configTextNav" href="/profile">
+                    <NavDropdown.Item
+                      className="configTextNav"
+                      href="/profile_admin_users"
+                    >
                       Perfiles
                     </NavDropdown.Item>
                   </>
                 ) : (
-                  <NavDropdown.Item className="configTextNav" href="/profile">
-                    Mi Perfil
-                  </NavDropdown.Item>
+                  <></>
                 )}
-                <NavDropdown.Divider />
-                <NavDropdown.Item className="configTextNav" href="/appointment">
-                  Sessiones
-                </NavDropdown.Item>
+                {role === "admin" ||
+                role === "super_admin" ||
+                role === "rider" ? (
+                  <>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item
+                      className="configTextNav"
+                      href="/eventos_rutas_creator"
+                    >
+                      Crear Evento
+                    </NavDropdown.Item>
+                  </>
+                ) : (
+                  <></>
+                )}
                 <NavDropdown.Divider />
                 <NavDropdown.Item className="configTextNav" href="/modify/user">
                   Contacto

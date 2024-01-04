@@ -1,9 +1,7 @@
-export const Custom_Button = () => {
-    return (
-      <>
-        <div>
-          <h1>Button</h1>
-        </div>
-      </>
-    );
-  };
+export const Custom_Button = ({ name, clickHandler, data }) => {
+  return (
+    <>
+      <button onClick={() => clickHandler(data)}>{name}</button>
+    </>
+  );
+};

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Custom_Input } from "../../common/Input/Input";
 import { login, register } from "../../service/apiCalls";
+import { Custom_Button } from "../../common/Button/Button";
 
 export const Register = () => {
   const dispatch = useDispatch();
@@ -91,7 +92,7 @@ export const Register = () => {
         <Custom_Input type="text" name="password" handler={inputHandler} />
       </div>
       <div>
-        <button onClick={() => registerHand(registerData)}>Registrar</button>
+        <Custom_Button name={"Registrar"} clickHandler={registerHand} data={registerData}/>
       </div>
     </div>
      

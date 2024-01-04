@@ -5,6 +5,7 @@ import { getDataUser, login } from "../../service/apiCalls";
 import { userDate, userLogin } from "../userSlice";
 import { Custom_Input } from "../../common/Input/Input";
 import "./Login.scss";
+import { Custom_Button } from "../../common/Button/Button";
 
 export const Login = () => {
   //declaro constantes
@@ -109,7 +110,7 @@ export const Login = () => {
         <Custom_Input type="text" name="password" handler={inputHandler} />
       </div>
       <div>
-        <button onClick={() => loginHand(loginData)}>Login</button>
+        <Custom_Button name={"Login"} clickHandler={loginHand} data={loginData}/>
       </div>
     </div>
   );
