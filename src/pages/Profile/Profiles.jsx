@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { userDate } from "../userSlice";
 import { Custom_Card } from "../../common/Card/Card";
 import { getDataUsers } from "../../service/apiCalls";
+import { Custom_Pagination } from "../../common/Pagination/Pagination";
 
 export const Profiles = () => {
   //declaro constantes
@@ -11,6 +12,8 @@ export const Profiles = () => {
   const token = useSelector(userDate).credentials;
   const user = useSelector(userDate).user;
   const [users, setUsers] = useState([]);
+  const [pages, setPages] = useState("");
+  const [curent_page, setCurent_Page] = useState(1)
 
   //si no tienes token te manda a la pagina de inicio
   const tokenExist = (tokenEx) => {
@@ -20,8 +23,10 @@ export const Profiles = () => {
   };
   useEffect(() => {
     tokenExist(token);
-    getDataUsers(token).then((res) => {
-      setUsers(res.data);
+    getDataUsers(token , curent_page)
+    .then((res) => {
+      setUsers(res.data.data);
+      setPages(res.data.last_page);
     });
   }, [token]);
 
@@ -41,6 +46,7 @@ export const Profiles = () => {
           </div>
         );
       })}
+      <Custom_Pagination />
     </>
   );
 };
