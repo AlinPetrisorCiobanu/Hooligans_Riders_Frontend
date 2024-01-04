@@ -42,3 +42,20 @@ export const getDataUser = (token) => {
         return error;
       });
   };
+
+  //extraer datos del usuario de la base de datos
+export const getDataUsers = (token) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return axios
+      .get(`${URL}users`, config)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+  };
