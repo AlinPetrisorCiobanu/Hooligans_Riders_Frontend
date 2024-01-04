@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userDate } from "../userSlice";
-import { Custom_Button } from "../../common/Button/Button";
+import { Custom_Card } from "../../common/Card/Card";
 
 export const Profile = () => {
   //declaro constantes
@@ -20,39 +20,17 @@ export const Profile = () => {
     tokenExist(token);
   }, [token]);
 
+  const modify = () => {
+    console.log("modificar")
+  }
+  const deleteTo = () => {
+    console.log("borrar")
+  }
+
   return (
     <>
       <div>
-        {user.role === "user" || user.role === "rider" ? (
-          <div>
-            <h1>
-              {user.name} {user.last_name}
-            </h1>
-            <h2>id de usuario: {user.id}</h2>
-            <h2>fecha de nacimiento: {user.date}</h2>
-            <h2>telefono: {user.phone}</h2>
-            <h2>email: {user.email}</h2>
-            <h2>nombre de usuario: {user.nickname}</h2>
-            <Custom_Button name={"modificar"}/>
-            <Custom_Button name={"borrar"}/>
-          </div>
-        ) : (
-          <div>
-            <h1>
-              {user.name} {user.last_name}
-            </h1>
-            <h2>id de usuario: {user.id}</h2>
-            <h2>fecha de nacimiento: {user.date}</h2>
-            <h2>telefono: {user.phone}</h2>
-            <h2>email: {user.email}</h2>
-            <h2>nombre de usuario: {user.nickname}</h2>
-            <h2>rol: {user.role}</h2>
-            <h2>borrado: {user.is_active}</h2>
-            <h2>confirmado: {user.confirmed}</h2>
-            <Custom_Button name={"modificar"}/>
-            <Custom_Button name={"borrar"}/>
-          </div>
-        )}
+        <Custom_Card user={user} modify={modify} deleteTo={deleteTo}/>
       </div>
     </>
   );
