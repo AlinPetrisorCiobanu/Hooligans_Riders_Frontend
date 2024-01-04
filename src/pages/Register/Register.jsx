@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { userDate } from "../userSlice";
+import { userDate, userLogin } from "../userSlice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Custom_Input } from "../../common/Input/Input";
-import { register } from "../../service/apiCalls";
+import { login, register } from "../../service/apiCalls";
 
 export const Register = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export const Register = () => {
   const token = useSelector(userDate).credentials;
   const tokenExist = (tokenEx) => {
     if (tokenEx) {
-      navigate("/");
+      navigate("/profile_user");
     }
   };
   useEffect(() => {
@@ -40,8 +40,19 @@ export const Register = () => {
   const registerHand = (data) => {
     console.log(data)
     register(data)
-      .then((res)=>{
-        console.log(res)
+      .then(()=>{
+        const dataToLogin = {
+          email: data.email,
+          password: data.password
+        }
+        login(dataToLogin)
+          .then((res)=>{
+            console.log(res)
+            dispatch(userLogin({ credentials: res.token, user: res.data }));
+          })
+          .catch(()=>{
+            navigate("/")
+          })
       })
       .catch((err)=>{
         console.log(err)
