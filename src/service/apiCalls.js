@@ -68,9 +68,9 @@ export const getEvents = (token , page) => {
       },
     };
     return axios
-      .get(`${URL}events`, config)
+      .get(`${URL}events?page=${page}`, config)
       .then((res) => {
-        return res.data;
+        return res.data.data;
       })
       .catch((error) => {
         return error;
