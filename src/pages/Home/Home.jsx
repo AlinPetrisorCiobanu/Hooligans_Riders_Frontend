@@ -8,7 +8,8 @@ import { userDate } from "../userSlice";
 import "./Home.scss";
 
 export const Home = () => {
-
+  const userData = useSelector(userDate).user;
+  const name = userData.name;
   const token = useSelector(userDate).credentials;
 
   return (
@@ -32,38 +33,7 @@ export const Home = () => {
               <Row className="mt-5">
                 <Col>
                   <Row>
-                    <h1>Bienvenido</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aut, perspiciatis magnam ex accusamus blanditiis veritatis quos natus asperiores perferendis modi corporis necessitatibus doloremque! Suscipit tenetur obcaecati exercitationem vero tempora?</p>
+                    <h1>{name}</h1>
                   </Row>
                 </Col>
               </Row>

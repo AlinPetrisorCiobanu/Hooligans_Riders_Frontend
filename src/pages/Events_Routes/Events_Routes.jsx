@@ -24,7 +24,7 @@ export const Events = () => {
   }, [token]);
 
   useEffect(() => {
-    getEvents(token , curent_page)
+    getEvents(token, curent_page)
       .then((res) => {
         setEvents(res.data);
         setPages(res.last_page);
@@ -54,18 +54,24 @@ export const Events = () => {
   return (
     <>
       {events.map((event) => {
-        console.log(event)
-        // const userData = event.users_data[0]
+        let userData;
+        if (event.users_data) {
+          userData = event.users_data[0];
+        }
         return (
           <div key={event.id}>
             <h1>{event.id}</h1>
             <h1>{event.id_user}</h1>
-            <h2>{event.img}</h2>
+            {event.img ? (
+              <img src={event.img} alt="imagen database" />
+            ) : (
+              <img src="ruta/a/imagen/default.jpg" alt="imagen por defecto" />
+            )}
             <h2>{event.maps}</h2>
             <h2>{event.kms}</h2>
             <h2>{event.participants}</h2>
             <h2>{event.is_active}</h2>
-            {/* <h3>{userData ? userData.name : 'Nombre no disponible'}</h3> */}
+            <h3>{userData ? userData.name : "Nombre no disponible"}</h3>
           </div>
         );
       })}

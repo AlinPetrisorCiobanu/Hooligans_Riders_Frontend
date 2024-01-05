@@ -60,7 +60,7 @@ export const getDataUsers = (token , page) => {
       });
   };
 
-  //extraer datos del usuario de la base de datos
+  //extraer los eventos de la base de datos
 export const getEvents = (token , page) => {
     const config = {
       headers: {
@@ -69,6 +69,24 @@ export const getEvents = (token , page) => {
     };
     return axios
       .get(`${URL}events?page=${page}`, config)
+      .then((res) => {
+        return res.data.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+  };
+
+  //crear nuevo usuario
+export const createNewEvent = (token , data) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    console.log(data)
+    return axios
+      .post(`${URL}events`,data, config)
       .then((res) => {
         return res.data.data;
       })
