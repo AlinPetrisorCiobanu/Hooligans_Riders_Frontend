@@ -79,10 +79,11 @@ export const Login = () => {
     }
   };
   return (
-    <div className="Container_div_Principal">
-    <div className="login_html">
+    <div className="d-flex justify-content-center align-items-center Container_div_Principal">
+    <div className="login_container">
       <h1>Login</h1>
-      {loginData.nickname !== "" || loginData.email !== "" ? (
+      <hr />
+      {loginData.nickname || loginData.email ? (
         <div></div>
       ) : (
         <div>
@@ -91,13 +92,13 @@ export const Login = () => {
             name="checkEmail"
             onChange={() => checkEmail()}
           />
-          <label htmlFor="checkEmail">iniciar sesion con email</label>
+          <label className="m-3" htmlFor="checkEmail">iniciar sesion con email</label>
         </div>
       )}
 
       {nicknameOrEmail === 1 ? (
         <div>
-          <label htmlFor="nickname">UserName</label>
+          <label htmlFor="nickname">Nombre de Usuario</label>
           <Custom_Input type="text" name="nickname" handler={inputHandler} />
         </div>
       ) : (
@@ -107,7 +108,7 @@ export const Login = () => {
         </div>
       )}
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Contraseña</label>
         <Custom_Input type="text" name="password" handler={inputHandler} />
       </div>
       <div>

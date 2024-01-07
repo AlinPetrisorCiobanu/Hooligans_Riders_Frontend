@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Custom_Input } from "../../common/Input/Input";
 import { login, register } from "../../service/apiCalls";
 import { Custom_Button } from "../../common/Button/Button";
+import "./Register.scss"
 
 export const Register = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export const Register = () => {
 
   return (
     <div className="Container_div_Principal">
-      <div>
+      <div className="register_container">
         <div>
           <label htmlFor="name">Nombre</label>
           <Custom_Input type="text" name="name" handler={inputHandler} />
