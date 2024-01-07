@@ -82,7 +82,7 @@ export const NavBar = () => {
                   <></>
                 )}
                 <NavDropdown.Divider />
-                <NavDropdown.Item className="configTextNav" href="/modify/user">
+                <NavDropdown.Item className="configTextNav" href="/contacto_user">
                   Contacto
                 </NavDropdown.Item>
                 <NavDropdown.Divider />

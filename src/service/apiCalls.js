@@ -84,7 +84,6 @@ export const createNewEvent = (token , data) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    console.log(data)
     return axios
       .post(`${URL}events`,data, config)
       .then((res) => {
@@ -94,3 +93,37 @@ export const createNewEvent = (token , data) => {
         return error;
       });
   };
+
+  //extraer todos los mensajes
+  export const getAllMessage = (token , page) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return axios
+      .get(`${URL}message?page=${page}`, config)
+      .then((res) => {
+        return res.data.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
+
+  //crear nuevo mensaje
+  export const newMessage = (token , data) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return axios
+      .post(`${URL}message`,data, config)
+      .then((res) => {
+        return res.data.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
