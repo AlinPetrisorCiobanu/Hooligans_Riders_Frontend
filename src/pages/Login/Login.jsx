@@ -109,7 +109,7 @@ export const Login = () => {
       )}
       <div>
         <label htmlFor="password">Contraseña</label>
-        <Custom_Input type="text" name="password" handler={inputHandler} />
+        <Custom_Input type="password" name="password" handler={inputHandler} />
       </div>
       <div>
         <Custom_Button name={"Login"} clickHandler={loginHand} data={loginData}/>

@@ -5,7 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { Custom_Input } from "../../common/Input/Input";
 import { login, register } from "../../service/apiCalls";
 import { Custom_Button } from "../../common/Button/Button";
-import "./Register.scss"
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import "./Register.scss";
 
 export const Register = () => {
   const dispatch = useDispatch();
@@ -61,44 +64,49 @@ export const Register = () => {
   };
 
   return (
-    <div className="Container_div_Principal">
-      <div className="register_container">
-        <div>
+    <div className="d-flex justify-content-center align-items-center Container_div_Principal">
+  <div className="register_container">
+    <Container>
+      <Row className="row_file_register flex-wrap justify-content-center">
+        <div className="col-md-6 input_options">
           <label htmlFor="name">Nombre</label>
           <Custom_Input type="text" name="name" handler={inputHandler} />
         </div>
-        <div>
+        <div className="col-md-6 input_options">
           <label htmlFor="last_name">Apellidos</label>
           <Custom_Input type="text" name="last_name" handler={inputHandler} />
         </div>
-        <div>
+        <div className="col-md-6 input_options">
           <label htmlFor="date">Fecha de Nacimiento</label>
           <Custom_Input type="text" name="date" handler={inputHandler} />
         </div>
-        <div>
+        <div className="col-md-6 input_options">
           <label htmlFor="phone">Telefono</label>
           <Custom_Input type="text" name="phone" handler={inputHandler} />
         </div>
-        <div>
+        <div className="col-md-6 input_options">
           <label htmlFor="email">Email</label>
           <Custom_Input type="text" name="email" handler={inputHandler} />
         </div>
-        <div>
+        <div className="col-md-6 input_options">
           <label htmlFor="nickname">Nombre de Usuario</label>
           <Custom_Input type="text" name="nickname" handler={inputHandler} />
         </div>
-        <div>
+        <div className="col-md-6 input_options">
           <label htmlFor="password">Contraseña</label>
-          <Custom_Input type="text" name="password" handler={inputHandler} />
+          <Custom_Input type="password" name="password" handler={inputHandler} />
         </div>
-        <div>
+        <div className="col-md-12">
           <Custom_Button
             name={"Registrar"}
             clickHandler={registerHand}
             data={registerData}
           />
         </div>
-      </div>
-    </div>
+      </Row>
+    </Container>
+  </div>
+</div>
+
   );
 };
