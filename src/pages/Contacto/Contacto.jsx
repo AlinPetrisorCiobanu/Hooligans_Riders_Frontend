@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userDate } from "../userSlice";
 import { Custom_Pagination } from "../../common/Pagination/Pagination";
-import { getAllMessage, newMessage } from "../../service/apiCalls";
+import { deleteMessages, getAllMessage, newMessage } from "../../service/apiCalls";
 
 export const Contacto = () => {
   //declaro constantes
@@ -78,6 +78,17 @@ export const Contacto = () => {
     }
   };
 
+  //metodo para borrar mensajes
+  const deleteMessage = (id) => {
+    deleteMessages(token , id)
+      .then((res)=>{
+        console.log(res)
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+  }
+
   return (
     <>
       {user.role === "user" || user.role === "rider" ? (
@@ -108,17 +119,26 @@ export const Contacto = () => {
         </div>
       ) : (
         <div>
-          {messages.map((mess)=>{
-            return(
-              <div key={(mess.id)}>
+          {messages.map((mess) => {
+            return (
+              <div key={mess.id}>
                 <h1>{mess.name}</h1>
+                <h2>{mess.id}</h2>
                 <h3>{mess.last_name}</h3>
                 <h3>{mess.data}</h3>
                 <h3>{mess.message}</h3>
+                <div>
+                  <Custom_Button name={"Borrar"} clickHandler={deleteMessage} data={mess.id}/>
+                </div>
                 <hr />
               </div>
-            )
+            );
           })}
+          <Custom_Pagination
+            pages={pages}
+            curent_page={curent_page}
+            handlerPages={pagination}
+          />
         </div>
       )}
     </>

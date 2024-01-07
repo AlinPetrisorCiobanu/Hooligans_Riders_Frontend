@@ -127,3 +127,20 @@ export const createNewEvent = (token , data) => {
         return error;
       });
   }
+
+  //borrar mensajes
+   export const deleteMessages = (token , id_message) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return axios
+      .delete(`${URL}message/${id_message}`, config)
+      .then((res) => {
+        return res.data.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
