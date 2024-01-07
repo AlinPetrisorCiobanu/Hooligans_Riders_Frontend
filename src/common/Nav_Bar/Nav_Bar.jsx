@@ -26,7 +26,7 @@ export const NavBar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg">
+    <Navbar collapseOnSelect expand="lg" className="Nav_bar_container">
       <Container>
         <Navbar.Brand href="/home">HooligansRiders</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

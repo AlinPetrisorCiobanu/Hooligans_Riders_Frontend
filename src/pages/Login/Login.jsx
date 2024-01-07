@@ -79,6 +79,7 @@ export const Login = () => {
     }
   };
   return (
+    <div className="Container_div_Principal">
     <div className="login_html">
       <h1>Login</h1>
       {loginData.nickname !== "" || loginData.email !== "" ? (
@@ -112,6 +113,7 @@ export const Login = () => {
       <div>
         <Custom_Button name={"Login"} clickHandler={loginHand} data={loginData}/>
       </div>
+    </div>
     </div>
   );
 };

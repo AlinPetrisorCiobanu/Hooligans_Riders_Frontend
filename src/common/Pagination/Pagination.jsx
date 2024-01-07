@@ -1,5 +1,7 @@
 import Pagination from "react-bootstrap/Pagination";
+import Container from "react-bootstrap/Container"
 import React from "react";
+import "./Pagination.scss"
 
 export const Custom_Pagination = ({ pages, curent_page , handlerPages }) => {
   const elementos = [];
@@ -8,7 +10,7 @@ export const Custom_Pagination = ({ pages, curent_page , handlerPages }) => {
   }
 
   return (
-    <div>
+    <Container fluid className="d-flex justify-content-center container_pagination">
       <Pagination>
         <Pagination.First  onClick={()=>handlerPages("first_page")}/>
         <Pagination.Prev  onClick={()=>handlerPages("prev")}/>
@@ -43,6 +45,6 @@ export const Custom_Pagination = ({ pages, curent_page , handlerPages }) => {
         <Pagination.Next  onClick={()=>handlerPages("next")} />
         <Pagination.Last  onClick={()=>handlerPages("last_page")} />
       </Pagination>
-    </div>
+    </Container>
   );
 };

@@ -90,7 +90,7 @@ export const Contacto = () => {
   }
 
   return (
-    <>
+    <div className="Container_div_Principal">
       {user.role === "user" || user.role === "rider" ? (
         <div>
           <div>
@@ -141,6 +141,6 @@ export const Contacto = () => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };

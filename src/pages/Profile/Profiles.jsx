@@ -55,7 +55,7 @@ export const Profiles = () => {
   };
 
   return (
-    <>
+    <div className="Container_div_Principal">
       {users.map((user) => {
         return (
           <div key={user.id}>
@@ -68,6 +68,6 @@ export const Profiles = () => {
         curent_page={curent_page}
         handlerPages={pagination}
       />
-    </>
+    </div>
   );
 };

@@ -52,7 +52,7 @@ export const Events = () => {
   // console.log(events)
 
   return (
-    <>
+    <div className="Container_div_Principal">
       {events.map((event) => {
         let userData;
         if (event.users_data) {
@@ -80,6 +80,6 @@ export const Events = () => {
         curent_page={curent_page}
         handlerPages={pagination}
       />
-    </>
+    </div>
   );
 };

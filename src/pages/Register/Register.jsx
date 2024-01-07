@@ -60,7 +60,7 @@ export const Register = () => {
   };
 
   return (
-    <>
+    <div className="Container_div_Principal">
       <div>
         <div>
           <label htmlFor="name">Nombre</label>
@@ -98,6 +98,6 @@ export const Register = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };

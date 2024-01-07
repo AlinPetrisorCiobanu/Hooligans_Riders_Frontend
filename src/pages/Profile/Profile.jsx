@@ -28,10 +28,10 @@ export const Profile = () => {
   }
 
   return (
-    <>
+    <div className="Container_div_Principal">
       <div>
         <Custom_Card user={user} modify={modify} deleteTo={deleteTo}/>
       </div>
-    </>
+    </div>
   );
 };

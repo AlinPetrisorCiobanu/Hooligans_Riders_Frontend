@@ -47,7 +47,7 @@ export const Creator_Events = () => {
   }
 
   return (
-    <>
+    <div className="Container_div_Principal">
       <div>
         <div>
           <label htmlFor="date">Fecha</label>
@@ -73,6 +73,6 @@ export const Creator_Events = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
