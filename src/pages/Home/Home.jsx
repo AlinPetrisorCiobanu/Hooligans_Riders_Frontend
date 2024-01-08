@@ -13,7 +13,7 @@ export const Home = () => {
   const token = useSelector(userDate).credentials;
 
   return (
-    <div className="Container_div_Principal">
+    <div className="Container_div_Home">
       {token ? (
         <Container fluid className="container-background-home">
           <Container fluid className="container-background-black"></Container>

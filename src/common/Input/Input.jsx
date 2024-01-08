@@ -1,6 +1,5 @@
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import "./Input.scss";
 
 export const Custom_Input = ({
   name,
@@ -9,6 +8,7 @@ export const Custom_Input = ({
   handler,
   handlerError,
   defaultValue,
+  custom
 }) => {
   return (
     <>
@@ -21,7 +21,7 @@ export const Custom_Input = ({
             onChange={handler}
             onBlur={handlerError}
             value={defaultValue}
-            className={"input"}
+            className={custom}
             maxLength={50}
           />
         </InputGroup>

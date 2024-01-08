@@ -13,6 +13,7 @@ export const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+
   //con la ayuda de Redux saco el token y datos del usuario
   const token = useSelector(userDate).credentials;
   const userData = useSelector(userDate).user;
@@ -26,7 +27,7 @@ export const NavBar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="Nav_bar_container">
+    <Navbar collapseOnSelect expand="lg" className="Nav_bar_container fixed-top">
       <Container>
         <Navbar.Brand href="/home">HooligansRiders</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

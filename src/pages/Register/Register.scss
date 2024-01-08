@@ -9,4 +9,15 @@ border-radius: 25px;
   .input_options {
     min-width: 15vw;
   }
+  .errors{
+    border: 3px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 4px dashed red;
+  }
+  .input_custom{
+    border: 3px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 4px dashed black;
+}
+ 
 }

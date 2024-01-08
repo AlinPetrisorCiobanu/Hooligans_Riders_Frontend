@@ -8,11 +8,26 @@ import { Custom_Button } from "../../common/Button/Button";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { validate } from "../../service/useFul";
+import { ToastContainer, toast } from "react-toastify";
+import dayjs from "dayjs";
+import "react-toastify/dist/ReactToastify.css";
 import "./Register.scss";
 
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [errorData, setErrorData] = useState({
+    nameError: "",
+    last_nameError: "",
+    dateError: "",
+    phoneError: "",
+    emailError: "",
+    nicknameError: "",
+    passwordError: "",
+  });
   const [registerData, setRegisterData] = useState({
     name: "",
     last_name: "",
@@ -22,6 +37,8 @@ export const Register = () => {
     nickname: "",
     password: "",
   });
+  const [date, setDate] = useState(new Date());
+  const [dateError, setDateError] = useState("");
 
   //si tienes token te manda a la pagina de inicio
   const token = useSelector(userDate).credentials;
@@ -42,7 +59,61 @@ export const Register = () => {
     }));
   };
 
+  //chequeo de errores para los inputs
+  const checkError = (e) => {
+    let error = "";
+    error = validate(e.target.name, e.target.value);
+    setErrorData((prevState) => ({
+      ...prevState,
+      [e.target.name + "Error"]: error,
+    }));
+  };
+
+  const showError = (error) => {
+    if (error !== "") {
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  };
+
+  useEffect(() => {
+    showError(errorData.nameError);
+    showError(errorData.last_nameError);
+    showError(errorData.dateError);
+    showError(errorData.phoneError);
+    showError(errorData.emailError);
+    showError(errorData.nicknameError);
+    showError(errorData.passwordError);
+  }, [errorData]);
+  useEffect(() => {
+    showError(dateError);
+  }, [dateError]);
+
+  useEffect(() => {
+    const currentDate = dayjs();
+    const inputDate = dayjs(date);
+  
+    if (inputDate.isAfter(currentDate)) {
+      setDateError("No puedes haber nacido en el futuro... ¿o sí?");
+    } else if (currentDate.diff(inputDate, 'years') > 100) {
+      setDateError("No puedes ser mayor de 100 años... ¿o sí?");
+    } else if (currentDate.diff(inputDate, 'years') < 16) {
+      setDateError("Tienes que ser mayor de 16 años");
+    } else {
+      setDateError("");
+    }
+  }, [date]);
+
   const registerHand = (data) => {
+    data.date = `${dayjs(date).format("YYYY-MM-DD")}`;
     register(data)
       .then(() => {
         const dataToLogin = {
@@ -65,48 +136,159 @@ export const Register = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center Container_div_Principal">
-  <div className="register_container">
-    <Container>
-      <Row className="row_file_register flex-wrap justify-content-center">
-        <div className="col-md-6 input_options">
-          <label htmlFor="name">Nombre</label>
-          <Custom_Input type="text" name="name" handler={inputHandler} />
-        </div>
-        <div className="col-md-6 input_options">
-          <label htmlFor="last_name">Apellidos</label>
-          <Custom_Input type="text" name="last_name" handler={inputHandler} />
-        </div>
-        <div className="col-md-6 input_options">
-          <label htmlFor="date">Fecha de Nacimiento</label>
-          <Custom_Input type="text" name="date" handler={inputHandler} />
-        </div>
-        <div className="col-md-6 input_options">
-          <label htmlFor="phone">Telefono</label>
-          <Custom_Input type="text" name="phone" handler={inputHandler} />
-        </div>
-        <div className="col-md-6 input_options">
-          <label htmlFor="email">Email</label>
-          <Custom_Input type="text" name="email" handler={inputHandler} />
-        </div>
-        <div className="col-md-6 input_options">
-          <label htmlFor="nickname">Nombre de Usuario</label>
-          <Custom_Input type="text" name="nickname" handler={inputHandler} />
-        </div>
-        <div className="col-md-6 input_options">
-          <label htmlFor="password">Contraseña</label>
-          <Custom_Input type="password" name="password" handler={inputHandler} />
-        </div>
-        <div className="col-md-12">
-          <Custom_Button
-            name={"Registrar"}
-            clickHandler={registerHand}
-            data={registerData}
-          />
-        </div>
-      </Row>
-    </Container>
-  </div>
-</div>
-
+      <div className="register_container">
+        <Container>
+          <Row className="row_file_register flex-wrap justify-content-center">
+            <div className="col-md-6 input_options ">
+              <label htmlFor="name">Nombre</label>
+              {errorData.nameError !== "" ? (
+                <Custom_Input
+                  type="text"
+                  name="name"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"errors"}
+                />
+              ) : (
+                <Custom_Input
+                  type="text"
+                  name="name"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"input_custom"}
+                />
+              )}
+            </div>
+            <div className="col-md-6 input_options">
+              <label htmlFor="last_name">Apellidos</label>
+              {errorData.last_nameError !== "" ? (
+                <Custom_Input
+                  type="text"
+                  name="last_name"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"errors"}
+                />
+              ) : (
+                <Custom_Input
+                  type="text"
+                  name="last_name"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"input_custom"}
+                />
+              )}
+            </div>
+            <div className="col-md-6 input_options">
+              <label htmlFor="date">Fecha de Nacimiento</label>
+              <DatePicker
+                selected={date}
+                name="date"
+                onChange={(date) => setDate(date)}
+              />
+            </div>
+            <div className="col-md-6 input_options">
+              <label htmlFor="phone">Telefono</label>
+              {errorData.phoneError !== "" ? (
+                <Custom_Input
+                  type="text"
+                  name="phone"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"errors"}
+                />
+              ) : (
+                <Custom_Input
+                  type="text"
+                  name="phone"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"input_custom"}
+                />
+              )}
+            </div>
+            <div className="col-md-6 input_options">
+              <label htmlFor="email">Email</label>
+              {errorData.emailError !== "" ? (
+                <Custom_Input
+                  type="text"
+                  name="email"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"errors"}
+                />
+              ) : (
+                <Custom_Input
+                  type="text"
+                  name="email"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"input_custom"}
+                />
+              )}
+            </div>
+            <div className="col-md-6 input_options">
+              <label htmlFor="nickname">Nombre de Usuario</label>
+              {errorData.nicknameError !== "" ? (
+                <Custom_Input
+                  type="text"
+                  name="nickname"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"errors"}
+                />
+              ) : (
+                <Custom_Input
+                  type="text"
+                  name="nickname"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"input_custom"}
+                />
+              )}
+            </div>
+            <div className="col-md-6 input_options">
+              <label htmlFor="password">Contraseña</label>
+              {errorData.passwordError !== "" ? (
+                <Custom_Input
+                  type="password"
+                  name="password"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"errors"}
+                />
+              ) : (
+                <Custom_Input
+                  type="password"
+                  name="password"
+                  handler={inputHandler}
+                  handlerError={checkError}
+                  custom={"input_custom"}
+                />
+              )}
+            </div>
+            <div className="col-md-12">
+              <Custom_Button
+                name={"Registrar"}
+                clickHandler={registerHand}
+                data={registerData}
+              />
+            </div>
+          </Row>
+        </Container>
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+    </div>
   );
 };
