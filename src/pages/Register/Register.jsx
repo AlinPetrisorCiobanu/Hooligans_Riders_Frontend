@@ -6,7 +6,6 @@ import { Custom_Input } from "../../common/Input/Input";
 import { login, register } from "../../service/apiCalls";
 import { Custom_Button } from "../../common/Button/Button";
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -37,8 +36,11 @@ export const Register = () => {
     nickname: "",
     password: "",
   });
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(
+    new Date().setFullYear(new Date().getFullYear() - 18)
+  );
   const [dateError, setDateError] = useState("");
+  const [otherError, setOtherError] = useState("");
 
   //si tienes token te manda a la pagina de inicio
   const token = useSelector(userDate).credentials;
@@ -100,12 +102,12 @@ export const Register = () => {
   useEffect(() => {
     const currentDate = dayjs();
     const inputDate = dayjs(date);
-  
+
     if (inputDate.isAfter(currentDate)) {
       setDateError("No puedes haber nacido en el futuro... ¿o sí?");
-    } else if (currentDate.diff(inputDate, 'years') > 100) {
+    } else if (currentDate.diff(inputDate, "years") > 100) {
       setDateError("No puedes ser mayor de 100 años... ¿o sí?");
-    } else if (currentDate.diff(inputDate, 'years') < 16) {
+    } else if (currentDate.diff(inputDate, "years") < 16) {
       setDateError("Tienes que ser mayor de 16 años");
     } else {
       setDateError("");
@@ -114,24 +116,47 @@ export const Register = () => {
 
   const registerHand = (data) => {
     data.date = `${dayjs(date).format("YYYY-MM-DD")}`;
-    register(data)
-      .then(() => {
-        const dataToLogin = {
-          email: data.email,
-          password: data.password,
-        };
-        login(dataToLogin)
-          .then((res) => {
-            console.log(res);
-            dispatch(userLogin({ credentials: res.token, user: res.data }));
+    data.email = data.email.toLowerCase()
+    if (
+      errorData.nameError === "" &&
+      errorData.last_nameError === "" &&
+      errorData.phoneError === "" &&
+      errorData.emailError === "" &&
+      errorData.nicknameError === "" &&
+      errorData.passwordError === "" &&
+      dateError === ""
+    ) {
+      if (
+        data.name !== "" &&
+        data.last_name !== "" &&
+        data.phone !== "" &&
+        data.email !== "" &&
+        data.nickname !== "" &&
+        data.password !== ""
+      ) {
+        register(data)
+          .then(() => {
+            const dataToLogin = {
+              email: data.email,
+              password: data.password,
+            };
+            login(dataToLogin)
+              .then((res) => {
+                dispatch(userLogin({ credentials: res.token, user: res.data }));
+              })
+              .catch(() => {
+                navigate("/");
+              });
           })
-          .catch(() => {
-            navigate("/");
+          .catch((err) => {
+            setOtherError(err);
           });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      } else {
+        showError("Faltan datos");
+      }
+    } else {
+      showError("Hay Errores");
+    }
   };
 
   return (
@@ -140,7 +165,9 @@ export const Register = () => {
         <Container>
           <Row className="row_file_register flex-wrap justify-content-center">
             <div className="col-md-6 input_options ">
-              <label htmlFor="name">Nombre</label>
+              <label htmlFor="name" className="mb-2">
+                Nombre
+              </label>
               {errorData.nameError !== "" ? (
                 <Custom_Input
                   type="text"
@@ -160,7 +187,9 @@ export const Register = () => {
               )}
             </div>
             <div className="col-md-6 input_options">
-              <label htmlFor="last_name">Apellidos</label>
+              <label htmlFor="last_name" className="mb-2">
+                Apellidos
+              </label>
               {errorData.last_nameError !== "" ? (
                 <Custom_Input
                   type="text"
@@ -180,15 +209,29 @@ export const Register = () => {
               )}
             </div>
             <div className="col-md-6 input_options">
-              <label htmlFor="date">Fecha de Nacimiento</label>
-              <DatePicker
-                selected={date}
-                name="date"
-                onChange={(date) => setDate(date)}
-              />
+              <label htmlFor="date" className="mb-2">
+                Fecha de Nacimiento
+              </label>
+              {dateError !== "" ? (
+                <DatePicker
+                  className="date_picker_custom date_picker_error"
+                  selected={date}
+                  name="date"
+                  onChange={(date) => setDate(date)}
+                />
+              ) : (
+                <DatePicker
+                  className="date_picker_custom date_picker_color"
+                  selected={date}
+                  name="date"
+                  onChange={(date) => setDate(date)}
+                />
+              )}
             </div>
             <div className="col-md-6 input_options">
-              <label htmlFor="phone">Telefono</label>
+              <label htmlFor="phone" className="mb-2">
+                Telefono
+              </label>
               {errorData.phoneError !== "" ? (
                 <Custom_Input
                   type="text"
@@ -208,7 +251,9 @@ export const Register = () => {
               )}
             </div>
             <div className="col-md-6 input_options">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="mb-2">
+                Email
+              </label>
               {errorData.emailError !== "" ? (
                 <Custom_Input
                   type="text"
@@ -228,7 +273,9 @@ export const Register = () => {
               )}
             </div>
             <div className="col-md-6 input_options">
-              <label htmlFor="nickname">Nombre de Usuario</label>
+              <label htmlFor="nickname" className="mb-2">
+                Nombre de Usuario
+              </label>
               {errorData.nicknameError !== "" ? (
                 <Custom_Input
                   type="text"
@@ -248,7 +295,9 @@ export const Register = () => {
               )}
             </div>
             <div className="col-md-6 input_options">
-              <label htmlFor="password">Contraseña</label>
+              <label htmlFor="password" className="mb-2">
+                Contraseña
+              </label>
               {errorData.passwordError !== "" ? (
                 <Custom_Input
                   type="password"
@@ -267,7 +316,7 @@ export const Register = () => {
                 />
               )}
             </div>
-            <div className="col-md-12">
+            <div className="col-md-12 mt-4">
               <Custom_Button
                 name={"Registrar"}
                 clickHandler={registerHand}

@@ -99,17 +99,17 @@ export const Login = () => {
       {nicknameOrEmail === 1 ? (
         <div>
           <label htmlFor="nickname">Nombre de Usuario</label>
-          <Custom_Input type="text" name="nickname" handler={inputHandler} />
+          <Custom_Input type="text" name="nickname" handler={inputHandler} custom={"input_custom"}/>
         </div>
       ) : (
         <div>
           <label htmlFor="email">Email</label>
-          <Custom_Input type="text" name="email" handler={inputHandler} />
+          <Custom_Input type="text" name="email" handler={inputHandler} custom={"input_custom"}/>
         </div>
       )}
       <div>
         <label htmlFor="password">Contraseña</label>
-        <Custom_Input type="password" name="password" handler={inputHandler} />
+        <Custom_Input type="password" name="password" handler={inputHandler} custom={"input_custom"}/>
       </div>
       <div>
         <Custom_Button name={"Login"} clickHandler={loginHand} data={loginData}/>
