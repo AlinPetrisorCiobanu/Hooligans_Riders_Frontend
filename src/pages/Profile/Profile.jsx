@@ -28,7 +28,7 @@ export const Profile = () => {
   }, [token]);
 
   const modify = () => {
-    console.log("modificar");
+    navigate("/profile_user_edit")
   };
   const deleteTo = () => {
     setModalShow(true);

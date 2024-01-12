@@ -65,11 +65,11 @@ export const Login = () => {
           const token = res.token;
           getDataUser(token)
             .then((data) => {
-              // if (data.data.is_active === 1) {
+              if (data.data.is_active === 1) {
                 dispatch(userLogin({ credentials: token, user: data.data }));
-              // } else {
-                // console.log("Lo sentimos, su cuenta ha sido borrada");
-              // }
+              } else {
+                console.log("Lo sentimos, su cuenta ha sido borrada");
+              }
             })
             .catch((err) => console.log(err));
         })
