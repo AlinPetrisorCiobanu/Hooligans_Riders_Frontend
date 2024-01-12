@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { userDate } from "../userSlice";
+import { userDate, userLogout } from "../userSlice";
 import { Custom_Card } from "../../common/Card/Card";
 import { Custom_Modal } from "../../common/Modal/Modal";
 import { useDispatch } from "react-redux";
@@ -20,7 +20,7 @@ export const Profile = () => {
   //si no tienes token te manda a la pagina de inicio
   const tokenExist = (tokenEx) => {
     if (!tokenEx) {
-      navigate("/login_user");
+      navigate("/");
     }
   };
   useEffect(() => {
@@ -34,16 +34,16 @@ export const Profile = () => {
     setModalShow(true);
   };
   useEffect(() => {
-    deleteUser(token)
-      .then((res) => {
-        setModalShow(false)
-        dispatch(userLogout({ credentials: "" }));
-        navigate("/");
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if(confirm === true){
+      deleteUser(token)
+        .then(() => {
+          setModalShow(false)
+          dispatch(userLogout({ credentials: "" }));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, [confirm]);
 
   return (
