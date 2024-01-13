@@ -1,15 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { userDate } from "../userSlice";
+import { userDate, userLogin } from "../userSlice";
 import { Custom_Card } from "../../common/Card/Card";
 import { getDataUsers } from "../../service/apiCalls";
 import { Custom_Pagination } from "../../common/Pagination/Pagination";
-import "./Profile.scss";
 import { Custom_Button } from "../../common/Button/Button";
+import "./Profile.scss";
 
 export const Profiles = () => {
   //declaro constantes
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector(userDate).credentials;
   const user = useSelector(userDate).user;
@@ -35,7 +36,8 @@ export const Profiles = () => {
   }, [curent_page]);
 
   const modify = (id) => {
-    console.log(id);
+    dispatch(userLogin({ ID_Perfil_to_modify:id }));
+    navigate("/profile_user_edit")
   };
   const deleteTo = (id) => {
     console.log(id);

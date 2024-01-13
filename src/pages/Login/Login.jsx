@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { getDataUser, login } from "../../service/apiCalls";
 import { userDate, userLogin } from "../userSlice";
 import { Custom_Input } from "../../common/Input/Input";
-import "./Login.scss";
 import { Custom_Button } from "../../common/Button/Button";
+import "./Login.scss";
 
 export const Login = () => {
   //declaro constantes

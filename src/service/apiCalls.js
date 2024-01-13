@@ -53,7 +53,7 @@ export const getDataUserID = (token , ID) => {
   return axios
     .get(`${URL}user/${ID}`, config)
     .then((res) => {
-      return res.data;
+      return res.data.data;
     })
     .catch((error) => {
       return error;
@@ -71,6 +71,23 @@ export const getDataUsers = (token, page) => {
     .get(`${URL}users?page=${page}`, config)
     .then((res) => {
       return res.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+//extraer datos del usuario de la base de datos
+export const modifyUserID = (token , ID , data) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return axios
+    .put(`${URL}user/${ID}`,data , config )
+    .then((res) => {
+      return res.data.data;
     })
     .catch((error) => {
       return error;
