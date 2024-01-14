@@ -10,6 +10,15 @@
   .custom_data_card {
     color: black;
   }
+
+  .container_div_edit_profiles{
+    .errors{
+      background-color: var(--error-color);
+    }
+    .no_error{
+      background-color: var(--input-color);
+    }
+  }
 }
 .Contianer_div_Profiles {
   justify-content: center;
@@ -43,4 +52,5 @@
       }
     }
   }
+
 }

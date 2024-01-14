@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userDate } from "../userSlice";
 import { Custom_Pagination } from "../../common/Pagination/Pagination";
-import { deleteMessages, getAllMessage, newMessage } from "../../service/apiCalls";
+import {deleteMessages,getAllMessage,newMessage} from "../../service/apiCalls";
+import "./Contacto.scss"
 
 export const Contacto = () => {
   //declaro constantes
@@ -80,67 +81,77 @@ export const Contacto = () => {
 
   //metodo para borrar mensajes
   const deleteMessage = (id) => {
-    deleteMessages(token , id)
-      .then((res)=>{
-        console.log(res)
+    deleteMessages(token, id)
+      .then((res) => {
+        console.log(res);
       })
-      .catch((err)=>{
-        console.log(err)
-      })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="Container_div_Principal">
-      {user.role === "user" || user.role === "rider" ? (
-        <div>
-          <div>
-            <label htmlFor="name">Nombre</label>
-            <Custom_Input type="text" name="name" handler={inputHandler} />
+      <div className="container_div_contact">
+        {user.role === "user" || user.role === "rider" ? (
+          <div className="div_contact">
+            <div>
+              <label htmlFor="name">Nombre</label>
+              <Custom_Input type="text" name="name" handler={inputHandler} />
+            </div>
+            <div>
+              <label htmlFor="last_name">Apellidos</label>
+              <Custom_Input
+                type="text"
+                name="last_name"
+                handler={inputHandler}
+              />
+            </div>
+            <div>
+              <label htmlFor="data">Detalle</label>
+              <Custom_Input type="text" name="data" handler={inputHandler} />
+            </div>
+            <div>
+              <label htmlFor="message">Mensaje</label>
+              <Custom_Input type="text" name="message" handler={inputHandler} />
+            </div>
+            <div>
+              <Custom_Button
+                name={"Enviar"}
+                clickHandler={createNewMessage}
+                data={newMessageData}
+              />
+            </div>
           </div>
+        ) : (
           <div>
-            <label htmlFor="last_name">Apellidos</label>
-            <Custom_Input type="text" name="last_name" handler={inputHandler} />
-          </div>
-          <div>
-            <label htmlFor="data">Detalle</label>
-            <Custom_Input type="text" name="data" handler={inputHandler} />
-          </div>
-          <div>
-            <label htmlFor="message">Mensaje</label>
-            <Custom_Input type="text" name="message" handler={inputHandler} />
-          </div>
-          <div>
-            <Custom_Button
-              name={"Enviar"}
-              clickHandler={createNewMessage}
-              data={newMessageData}
+            {messages.map((mess) => {
+              return (
+                <div key={mess.id} className="div_contact" >
+                  <h1>{mess.name}</h1>
+                  <h2>{mess.id}</h2>
+                  <h3>{mess.last_name}</h3>
+                  <h3>{mess.data}</h3>
+                  <h3>{mess.message}</h3>
+                  <div>
+                    <Custom_Button
+                      name={"Borrar"}
+                      clickHandler={deleteMessage}
+                      data={mess.id}
+                    />
+                  </div>
+                  <hr />
+                </div>
+              );
+            })}
+            <Custom_Pagination
+              pages={pages}
+              curent_page={curent_page}
+              handlerPages={pagination}
             />
           </div>
-        </div>
-      ) : (
-        <div>
-          {messages.map((mess) => {
-            return (
-              <div key={mess.id}>
-                <h1>{mess.name}</h1>
-                <h2>{mess.id}</h2>
-                <h3>{mess.last_name}</h3>
-                <h3>{mess.data}</h3>
-                <h3>{mess.message}</h3>
-                <div>
-                  <Custom_Button name={"Borrar"} clickHandler={deleteMessage} data={mess.id}/>
-                </div>
-                <hr />
-              </div>
-            );
-          })}
-          <Custom_Pagination
-            pages={pages}
-            curent_page={curent_page}
-            handlerPages={pagination}
-          />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

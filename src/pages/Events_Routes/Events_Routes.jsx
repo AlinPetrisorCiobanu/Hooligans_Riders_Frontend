@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { userDate } from "../userSlice";
 import { getEvents } from "../../service/apiCalls";
 import { Custom_Pagination } from "../../common/Pagination/Pagination";
+import "./Events.scss";
 
 export const Events = () => {
   //declaro constantes
@@ -53,33 +54,35 @@ export const Events = () => {
 
   return (
     <div className="Container_div_Principal">
-      {events.map((event) => {
-        let userData;
-        if (event.users_data) {
-          userData = event.users_data[0];
-        }
-        return (
-          <div key={event.id}>
-            <h1>{event.id}</h1>
-            <h1>{event.id_user}</h1>
-            {event.img ? (
-              <img src={event.img} alt="imagen database" />
-            ) : (
-              <img src="ruta/a/imagen/default.jpg" alt="imagen por defecto" />
-            )}
-            <h2>{event.maps}</h2>
-            <h2>{event.kms}</h2>
-            <h2>{event.participants}</h2>
-            <h2>{event.is_active}</h2>
-            <h3>{userData ? userData.name : "Nombre no disponible"}</h3>
-          </div>
-        );
-      })}
-      <Custom_Pagination
-        pages={pages}
-        curent_page={curent_page}
-        handlerPages={pagination}
-      />
+      <div className="container_events">
+        {events.map((event) => {
+          let userData;
+          if (event.users_data) {
+            userData = event.users_data[0];
+          }
+          return (
+            <div key={event.id}>
+              <h1>{event.id}</h1>
+              <h1>{event.id_user}</h1>
+              {event.img ? (
+                <img src={event.img} alt="imagen database" />
+              ) : (
+                <img src="ruta/a/imagen/default.jpg" alt="imagen por defecto" />
+              )}
+              <h2>{event.maps}</h2>
+              <h2>{event.kms}</h2>
+              <h2>{event.participants}</h2>
+              <h2>{event.is_active}</h2>
+              <h3>{userData ? userData.name : "Nombre no disponible"}</h3>
+            </div>
+          );
+        })}
+        <Custom_Pagination
+          pages={pages}
+          curent_page={curent_page}
+          handlerPages={pagination}
+        />
+      </div>
     </div>
   );
 };

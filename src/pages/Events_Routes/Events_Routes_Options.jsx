@@ -5,6 +5,7 @@ import { userDate } from "../userSlice";
 import { Custom_Input } from "../../common/Input/Input";
 import { createNewEvent } from "../../service/apiCalls";
 import { Custom_Button } from "../../common/Button/Button";
+import "./Events.scss"
 
 export const Creator_Events = () => {
   //declaro constantes
@@ -48,7 +49,7 @@ export const Creator_Events = () => {
 
   return (
     <div className="Container_div_Principal">
-      <div>
+        <div className="container_events_options">
         <div>
           <label htmlFor="date">Fecha</label>
           <Custom_Input type="text" name="date" handler={inputHandler} />
@@ -72,7 +73,8 @@ export const Creator_Events = () => {
             data={newEventData}
           />
         </div>
-      </div>
+        </div>
+
     </div>
   );
 };
