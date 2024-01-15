@@ -29,27 +29,27 @@ export const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" className="Nav_bar_container fixed-top">
       <Container>
-        <Navbar.Brand href="/home">HooligansRiders</Navbar.Brand>
+        <Navbar.Brand href="/home" className="text_color_nav">HooligansRiders</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           {token ? (
             <Nav>
-              <Nav.Link className="configTextNav" href="/register_user">
+              <Nav.Link className="configTextNav text_color_nav" href="/galery">
                 Galeria
               </Nav.Link>
-              <Nav.Link className="configTextNav" href="/eventos_rutas">
+              <Nav.Link className="configTextNav text_color_nav" href="/eventos_rutas">
                 Eventos
               </Nav.Link>
               <NavDropdown
-                className="configTextNav"
+                className="configTextNav text_color_nav"
                 title={
                   role === "admin" || role === "super_admin" ? "admin" : name
                 }
                 id="collapsible-nav-dropdown"
               >
                 <NavDropdown.Item
-                  className="configTextNav"
+                  className="configTextNav text_color_nav"
                   href="/profile_user"
                 >
                   Mi Perfil
@@ -83,12 +83,12 @@ export const NavBar = () => {
                   <></>
                 )}
                 <NavDropdown.Divider />
-                <NavDropdown.Item className="configTextNav" href="/contacto_user">
+                <NavDropdown.Item className="configTextNav text_color_nav" href="/contacto_user">
                   Contacto
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
-                  className="configTextNav"
+                  className="configTextNav text_color_nav"
                   onClick={() => LogOut()}
                 >
                   Log Out
@@ -98,11 +98,11 @@ export const NavBar = () => {
           ) : (
             <Nav>
               {location.pathname === "/register_user" ? (
-                <Nav.Link className="configTextNav" href="/login_user">
+                <Nav.Link className="configTextNav text_color_nav" href="/login_user">
                   Login
                 </Nav.Link>
               ) : (
-                <Nav.Link className="configTextNav" href="/register_user">
+                <Nav.Link className="configTextNav text_color_nav" href="/register_user">
                   Registrate
                 </Nav.Link>
               )}

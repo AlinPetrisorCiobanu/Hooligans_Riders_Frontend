@@ -128,6 +128,57 @@ export const getEvents = (token, page) => {
     });
 };
 
+//extraer los eventos de la base de datos
+export const getEvent_Participant = (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return axios
+    .get(`${URL}event_participant`, config)
+    .then((res) => {
+      return res.data.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+//añadir participante al evento
+export const addParticipant = (token, id) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return axios
+    .patch(`${URL}add_participant/${id}`,null, config )
+    .then((res) => {
+      return res.data.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+//eliminar participante del evento
+export const removeParticipant = (token, id) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return axios
+    .patch(`${URL}remove_participant/${id}`,null, config)
+    .then((res) => {
+      return res.data.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
 //crear nuevo usuario
 export const createNewEvent = (token, data) => {
   const config = {

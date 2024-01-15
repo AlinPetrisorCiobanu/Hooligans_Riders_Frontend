@@ -12,6 +12,15 @@
   }
 
   .container_div_edit_profiles{
+    justify-content: center;
+  height: 80vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: center;
+  padding: 5vh;
+  padding-top: 50vh;
     .errors{
       background-color: var(--error-color);
     }

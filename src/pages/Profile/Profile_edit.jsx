@@ -214,8 +214,7 @@ export const Profile_Edit = () => {
     // if (date !== dateUser) {
     //   dataToSend.date = date;
     // }
-
-    console.log(dataToSend);
+    console.log(dataToSend)
     modifyUserID(token, user.id, dataToSend)
       .then((res) => {
         console.log(res);
