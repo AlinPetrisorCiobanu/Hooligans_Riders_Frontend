@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { userDate, userLogin } from "../userSlice";
-import { Custom_Card } from "../../common/Card/Card";
 import { getDataUsers } from "../../service/apiCalls";
 import { Custom_Pagination } from "../../common/Pagination/Pagination";
 import { Custom_Button } from "../../common/Button/Button";
+import { Form, Row, Col } from "react-bootstrap";
 import "./Profile.scss";
+import { Custom_Input } from "../../common/Input/Input";
 
 export const Profiles = () => {
   //declaro constantes
@@ -17,6 +18,11 @@ export const Profiles = () => {
   const [users, setUsers] = useState([]);
   const [pages, setPages] = useState("");
   const [curent_page, setCurent_Page] = useState(1);
+  const [searchData, setSearchData] = useState({
+    phone: "",
+    email: "",
+    nickname: "",
+  });
 
   //si no tienes token te manda a la pagina de inicio
   const tokenExist = (tokenEx) => {
@@ -29,15 +35,63 @@ export const Profiles = () => {
   }, [token]);
 
   useEffect(() => {
-    getDataUsers(token, curent_page).then((res) => {
-      setUsers(res.data.data);
-      setPages(res.data.last_page);
-    });
+    getDateBBD();
   }, [curent_page]);
 
+  useEffect(() => {
+    getDateBBD();
+  }, [searchData]);
+
+  const getDateBBD = () => {
+    getDataUsers(token, curent_page)
+      .then((res) => {
+        if (
+          searchData.phone === "" &&
+          searchData.email === "" &&
+          searchData.nickname === ""
+        ) {
+          setUsers(res.data.data);
+          setPages(res.data.last_page);
+        } else {
+          const filtered = res.data.data.filter((profile) => {
+            let phoneMatch = true;
+            let emailMatch = true;
+            let nicknameMatch = true;
+
+            if (searchData.phone !== "") {
+              phoneMatch = profile.phone.includes(searchData.phone);
+            }
+            if (searchData.email !== "") {
+              emailMatch = profile.email
+                .toLowerCase()
+                .includes(searchData.email);
+            }
+            if (searchData.nickname !== "") {
+              nicknameMatch = profile.nickname.includes(searchData.nickname);
+            }
+
+            return phoneMatch && emailMatch && nicknameMatch;
+          });
+
+          setUsers(filtered);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //guardo los datos de los inputs
+  const inputHandler = (e) => {
+    setSearchData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   const modify = (id) => {
-    dispatch(userLogin({ ID_Perfil_to_modify:id }));
-    navigate("/profile_user_edit")
+    dispatch(userLogin({ ID_Perfil_to_modify: id }));
+    navigate("/profile_user_edit");
   };
   const deleteTo = (id) => {
     console.log(id);
@@ -62,6 +116,43 @@ export const Profiles = () => {
     <div className="Container_div_Principal">
       <div className="Contianer_div_Profiles">
         <h1 className="text-center m-4">Profiles</h1>
+        <div className="shearch_bar_user">
+          <div>
+            <Form>
+              <Row className="mb-2">
+                <Form.Group as={Col} controlId="phone">
+                  <Form.Label>Telefono</Form.Label>
+                  <Custom_Input
+                    type="text"
+                    name="phone"
+                    handler={inputHandler}
+                    custom={"input_custom"}
+                  />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="email">
+                  <Form.Label>Email</Form.Label>
+                  <Custom_Input
+                    type="text"
+                    name="email"
+                    handler={inputHandler}
+                    custom={"input_custom"}
+                  />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="nickname">
+                  <Form.Label>Nombre de Usuario</Form.Label>
+                  <Custom_Input
+                    type="text"
+                    name="nickname"
+                    handler={inputHandler}
+                    custom={"input_custom"}
+                  />
+                </Form.Group>
+              </Row>
+            </Form>
+          </div>
+        </div>
         <table className="Table_Profile_Custom">
           <thead>
             <tr className="text-center">
@@ -94,10 +185,18 @@ export const Profiles = () => {
                   <td className="text-center border_table">{user.is_active}</td>
                   <td className="text-center border_table">{user.confirmed}</td>
                   <td className="text-center">
-                    <Custom_Button name={"modificar"} clickHandler={modify} data={user.id} />
+                    <Custom_Button
+                      name={"modificar"}
+                      clickHandler={modify}
+                      data={user.id}
+                    />
                   </td>
                   <td className="text-center">
-                    <Custom_Button name={"borrar"} clickHandler={deleteTo} data={user.id} />
+                    <Custom_Button
+                      name={"borrar"}
+                      clickHandler={deleteTo}
+                      data={user.id}
+                    />
                   </td>
                 </tr>
               );
@@ -105,11 +204,11 @@ export const Profiles = () => {
           </tbody>
         </table>
         <div className="m-4">
-        <Custom_Pagination
-          pages={pages}
-          curent_page={curent_page}
-          handlerPages={pagination}
-        />
+          <Custom_Pagination
+            pages={pages}
+            curent_page={curent_page}
+            handlerPages={pagination}
+          />
         </div>
       </div>
     </div>
